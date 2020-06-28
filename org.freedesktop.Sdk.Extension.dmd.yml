@@ -26,16 +26,16 @@ modules:
       - mv dmd.conf ${FLATPAK_DEST}/bin
     sources:
       - type: archive
-        url: https://github.com/dlang/dmd/archive/v2.091.1.tar.gz
-        sha256: cd6700104ad25416e7928ae0bb0ba36d056f1d3f2553b2a40c8b1a34ed3cfa8b
+        url: https://github.com/dlang/dmd/archive/v2.092.1.tar.gz
+        sha256: 765226feaeaabcfdc5d771566af16058d51b017b8b19c5d91a3faa9c69bdd373
         dest: dmd
       - type: archive
-        url: https://github.com/dlang/druntime/archive/v2.091.1.tar.gz
-        sha256: a9ecfc9836debdc374108a141ef465df70d8bcd11e60e394706f08d9ada2ec35
+        url: https://github.com/dlang/druntime/archive/v2.092.1.tar.gz
+        sha256: c28a60ed4dcb7b1d0e171d45f48a5876814ca629e5359592806074fcd4609cc4
         dest: druntime
       - type: archive
-        url: https://github.com/dlang/phobos/archive/v2.091.1.tar.gz
-        sha256: 75b0cb8ca8651d2e7ffbf1cb621995b87f1bba19675afc44aab8d119019cfbe0
+        url: https://github.com/dlang/phobos/archive/v2.092.1.tar.gz
+        sha256: 15547631ce3cb618cc096da728746dc725d429cf0796e646c310efb21e345ce1
         dest: phobos
       - type: file
         path: dmd.conf
@@ -49,18 +49,18 @@ modules:
       - install -Dsm0755 ddemangle dustmite rdmd /usr/lib/sdk/dmd/bin/
     sources:
       - type: archive
-        url: https://github.com/dlang/tools/archive/v2.091.1.tar.gz
-        sha256: 15d385c04e46860d2fb8bbe736c9a9f4b2fcd9fdf0a6daf6f801177125660c68
+        url: https://github.com/dlang/tools/archive/v2.092.1.tar.gz
+        sha256: 8db4d21c6348fc25143d532e56f345198a384cce85c08979aca2476211e15113
 
   - name: dub
     buildsystem: simple
     build-commands:
-      - DMD=dmd GITVER="v1.20.0" ./build.d
+      - DMD=dmd GITVER="v1.21.0" ./build.d
       - install -s bin/dub /usr/lib/sdk/dmd/bin/
     sources:
       - type: archive
-        url: https://github.com/dlang/dub/archive/v1.20.1.zip
-        sha256: db0590bf58609300f6957095c6a9acbb38fd80c9b5ed9ee60f6fb4caa5416fb0
+        url: https://github.com/dlang/dub/archive/v1.21.0.zip
+        sha256: 9fe7f1c4f0fafa626718b1e7ad4a87bd6ad09117f63b4dcf995bb78df8c20189
 
   - name: scripts
     buildsystem: simple
