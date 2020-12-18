@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2020 Rasmus Thomsen <oss@cogitri.dev> -->
-<component type="runtime">
+<component type="addon">
   <id>org.freedesktop.Sdk.Extension.dmd</id>
+  <extends>org.freedesktop.Sdk</extends>
   <name>dmd</name>
   <summary>DMD DLang reference compiler SDK Extension for the Freedesktop Flatpak runtime</summary>
   <metadata_license>CC0-1.0</metadata_license>
