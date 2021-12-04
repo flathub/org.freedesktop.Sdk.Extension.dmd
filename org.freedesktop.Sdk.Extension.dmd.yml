@@ -18,10 +18,14 @@ modules:
   - name: dmd
     buildsystem: simple
     build-commands:
-      - make -C dmd -f posix.mak HOST_DMD=ldmd2 ENABLE_RELEASE=1 INSTALL_DIR=$PWD/stage install
-      - make -C druntime -f posix.mak HOST_DMD=ldmd2 ENABLE_RELEASE=1 INSTALL_DIR=$PWD/stage install
-      - make -C phobos -f posix.mak HOST_DMD=ldmd2 ENABLE_RELEASE=1 INSTALL_DIR=$PWD/stage install
-      - mkdir -p ${FLATPAK_DEST}/bin ${FLATPAK_DEST}/lib ${FLATPAK_DEST}/include/dmd/ ${FLATPAK_DEST}/dmd/
+      - make -C dmd -f posix.mak HOST_DMD=ldmd2 ENABLE_RELEASE=1 INSTALL_DIR=$PWD/stage
+        install
+      - make -C druntime -f posix.mak HOST_DMD=ldmd2 ENABLE_RELEASE=1 INSTALL_DIR=$PWD/stage
+        install
+      - make -C phobos -f posix.mak HOST_DMD=ldmd2 ENABLE_RELEASE=1 INSTALL_DIR=$PWD/stage
+        install
+      - mkdir -p ${FLATPAK_DEST}/bin ${FLATPAK_DEST}/lib ${FLATPAK_DEST}/include/dmd/
+        ${FLATPAK_DEST}/dmd/
       - install -m0755 $PWD/stage/linux/bin64/dmd ${FLATPAK_DEST}/bin
       - mv $PWD/stage/linux/lib64/* ${FLATPAK_DEST}/lib
       - mv $PWD/stage/src/druntime/import ${FLATPAK_DEST}/include/dmd/druntime
@@ -30,8 +34,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dlang/dmd.git
-        tag: v2.092.1
-        commit: 40e10b47978782f4fc576f99c4d1b11631bd426f
+        tag: v2.098.0
+        commit: e113793d1e4e89536bfb9042baeb95c05df779de
         x-checker-data:
           type: json
           url: https://api.github.com/repos/dlang/dmd/git/refs/tags/v
@@ -47,8 +51,8 @@ modules:
         dest: dmd
       - type: git
         url: https://github.com/dlang/druntime.git
-        tag: v2.092.1
-        commit: b524311864adf05a8f8d721154fcf1c354543c8d
+        tag: v2.098.0
+        commit: ecaec4910ac54a2bf8661d900ba0e8b229383fd3
         x-checker-data:
           type: json
           url: https://api.github.com/repos/dlang/druntime/git/refs/tags/v
@@ -58,8 +62,8 @@ modules:
         dest: druntime
       - type: git
         url: https://github.com/dlang/phobos.git
-        tag: v2.092.1
-        commit: c4c82994d329224c35a851ac6e021e737b296c16
+        tag: v2.098.0
+        commit: 0e97dfdb373b507db6dc1d1934bc585749f1c13b
         x-checker-data:
           type: json
           url: https://api.github.com/repos/dlang/phobos/git/refs/tags/v
@@ -95,18 +99,18 @@ modules:
   - name: scripts
     buildsystem: simple
     build-commands:
-      - 'cp {install,enable}.sh /usr/lib/sdk/dmd'
+      - cp {install,enable}.sh /usr/lib/sdk/dmd
     sources:
       - type: script
         commands:
-          - 'export PATH="$PATH:/usr/lib/sdk/dmd/bin"'
-          - 'export LIBRARY_PATH="$LIBRARY_PATH:/usr/lib/sdk/dmd/lib"'
-          - 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/sdk/dmd/lib"'
+          - export PATH="$PATH:/usr/lib/sdk/dmd/bin"
+          - export LIBRARY_PATH="$LIBRARY_PATH:/usr/lib/sdk/dmd/lib"
+          - export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/sdk/dmd/lib"
         dest-filename: enable.sh
       - type: script
         commands:
-          - 'mkdir -p ${FLATPAK_DEST}/lib'
-          - 'cp -r /usr/lib/sdk/lib/libphobos2.so* ${FLATPAK_DEST}/lib/'
+          - mkdir -p ${FLATPAK_DEST}/lib
+          - cp -r /usr/lib/sdk/lib/libphobos2.so* ${FLATPAK_DEST}/lib/
         dest-filename: install.sh
 
   - name: appdata
@@ -114,7 +118,8 @@ modules:
     build-commands:
       - mkdir -p ${FLATPAK_DEST}/share/metainfo
       - cp ${FLATPAK_ID}.metainfo.xml ${FLATPAK_DEST}/share/metainfo
-      - appstream-compose --basename=${FLATPAK_ID} --prefix=${FLATPAK_DEST} --origin=flatpak ${FLATPAK_ID}
+      - appstream-compose --basename=${FLATPAK_ID} --prefix=${FLATPAK_DEST} --origin=flatpak
+        ${FLATPAK_ID}
     sources:
       - type: file
         path: org.freedesktop.Sdk.Extension.dmd.metainfo.xml

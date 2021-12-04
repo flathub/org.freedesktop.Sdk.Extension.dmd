@@ -13,8 +13,11 @@
   </description>
   <url type="homepage">https://github.com/dlang/dmd</url>
   <update_contact>oss@cogitri.dev</update_contact>
-  <content_rating type="oars-1.1" />
+  <content_rating type="oars-1.1"/>
   <project_license>BSL-1.0</project_license>
   <developer_name>DMD developers</developer_name>
   <url type="bugtracker">https://github.com/dlang/dmd</url>
+  <releases>
+    <release version="2.098.0" date="2021-10-10"/>
+  </releases>
 </component>
