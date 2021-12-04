@@ -35,7 +35,7 @@ modules:
       - type: git
         url: https://github.com/dlang/dmd.git
         tag: v2.098.0
-        commit: e113793d1e4e89536bfb9042baeb95c05df779de
+        commit: c60fe8e075fb01c4fa510953c13d6e1e10f79671
         x-checker-data:
           type: json
           url: https://api.github.com/repos/dlang/dmd/git/refs/tags/v
@@ -44,7 +44,8 @@ modules:
             if .object.type=="tag" then . else error("not a tag") end |
             .ref | sub("^refs/tags/"; "")
           version-query: $tag | sub("^[vV]"; "")
-          commit-query: last | .object.sha
+          commit-data-url: last | .object.url
+          commit-query: .object.sha
           timestamp-data-url: last | .object.url
           timestamp-query: .tagger.date
           is-main-source: true
@@ -78,7 +79,8 @@ modules:
     buildsystem: simple
     build-commands:
       - dmd -O -release ddemangle.d -ofddemangle
-      - dmd -O -release DustMite/dustmite.d DustMite/splitter.d DustMite/polyhash.d -ofdustmite
+      - dmd -O -release DustMite/dustmite.d DustMite/splitter.d DustMite/polyhash.d
+        -ofdustmite
       - dmd -O -release rdmd.d -ofrdmd
       - install -Dsm0755 ddemangle dustmite rdmd /usr/lib/sdk/dmd/bin/
     sources:
