@@ -28,17 +28,44 @@ modules:
       - mv $PWD/stage/src/phobos ${FLATPAK_DEST}/include/dmd/phobos
       - mv dmd.conf ${FLATPAK_DEST}/bin
     sources:
-      - type: archive
-        url: https://github.com/dlang/dmd/archive/v2.092.1.tar.gz
-        sha256: 765226feaeaabcfdc5d771566af16058d51b017b8b19c5d91a3faa9c69bdd373
+      - type: git
+        url: https://github.com/dlang/dmd.git
+        tag: v2.092.1
+        commit: 40e10b47978782f4fc576f99c4d1b11631bd426f
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/dlang/dmd/git/refs/tags/v
+          tag-query: >-
+            last |
+            if .object.type=="tag" then . else error("not a tag") end |
+            .ref | sub("^refs/tags/"; "")
+          version-query: $tag | sub("^[vV]"; "")
+          commit-query: last | .object.sha
+          timestamp-data-url: last | .object.url
+          timestamp-query: .tagger.date
+          is-main-source: true
         dest: dmd
-      - type: archive
-        url: https://github.com/dlang/druntime/archive/v2.092.1.tar.gz
-        sha256: c28a60ed4dcb7b1d0e171d45f48a5876814ca629e5359592806074fcd4609cc4
+      - type: git
+        url: https://github.com/dlang/druntime.git
+        tag: v2.092.1
+        commit: b524311864adf05a8f8d721154fcf1c354543c8d
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/dlang/druntime/git/refs/tags/v
+          tag-query: last | .ref | sub("^refs/tags/"; "")
+          version-query: $tag | sub("^[vV]"; "")
+          commit-query: last | .object.sha
         dest: druntime
-      - type: archive
-        url: https://github.com/dlang/phobos/archive/v2.092.1.tar.gz
-        sha256: 15547631ce3cb618cc096da728746dc725d429cf0796e646c310efb21e345ce1
+      - type: git
+        url: https://github.com/dlang/phobos.git
+        tag: v2.092.1
+        commit: c4c82994d329224c35a851ac6e021e737b296c16
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/dlang/phobos/git/refs/tags/v
+          tag-query: last | .ref | sub("^refs/tags/"; "")
+          version-query: $tag | sub("^[vV]"; "")
+          commit-query: last | .object.sha
         dest: phobos
       - type: file
         path: dmd.conf
