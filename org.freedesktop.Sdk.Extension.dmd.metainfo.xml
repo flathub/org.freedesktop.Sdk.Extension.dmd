@@ -18,6 +18,7 @@
   <developer_name>DMD developers</developer_name>
   <url type="bugtracker">https://github.com/dlang/dmd</url>
   <releases>
+    <release version="2.103.1-beta.1" date="2023-04-15"/>
     <release version="2.100.2" date="2022-09-10"/>
     <release version="2.100.1" date="2022-07-09"/>
     <release version="2.100.0" date="2022-05-21"/>
