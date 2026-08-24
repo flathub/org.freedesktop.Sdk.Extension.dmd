@@ -34,8 +34,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dlang/dmd.git
-        tag: v2.100.2
-        commit: 316b89f1e3dffcad488c26f56f58c8adfcb84b26
+        tag: v2.114.0-beta.1
+        commit: b11900063d1f058d813ecc9300994e694652be8b
         x-checker-data:
           type: json
           url: https://api.github.com/repos/dlang/dmd/git/refs/tags/v
@@ -52,8 +52,8 @@ modules:
         dest: dmd
       - type: git
         url: https://github.com/dlang/druntime.git
-        tag: v2.100.2
-        commit: 9b0caec78b95ed06ab3e91403d1d2342207260fa
+        tag: v2.100.2-beta.1
+        commit: 213caf70050d75d9bc805c7ddb097571c41aa245
         x-checker-data:
           type: json
           url: https://api.github.com/repos/dlang/druntime/git/refs/tags/v
@@ -63,8 +63,8 @@ modules:
         dest: druntime
       - type: git
         url: https://github.com/dlang/phobos.git
-        tag: v2.100.2
-        commit: caaf8773b6e8a3ca39aac67bdc2a4a6f10ec2f5e
+        tag: v2.114.0-beta.1
+        commit: 9f5d0bf82284201e9dae8c28e51e04742671745d
         x-checker-data:
           type: json
           url: https://api.github.com/repos/dlang/phobos/git/refs/tags/v
@@ -86,8 +86,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dlang/tools.git
-        tag: v2.100.2
-        commit: 7ab9a6c650e7c7bdec559c9ef5b73bccfa1f6dbc
+        tag: v2.113.0
+        commit: bde43cdec1faa2a6cbfad50685e32d9c39f1d10c
         x-checker-data:
           type: git
           tag-pattern: ^v([\d\.]+)$
