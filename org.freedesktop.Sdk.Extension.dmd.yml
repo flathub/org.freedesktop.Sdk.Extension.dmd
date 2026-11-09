@@ -1,11 +1,11 @@
 app-id: org.freedesktop.Sdk.Extension.dmd
-branch: '22.08'
+branch: '26.08'
 runtime: org.freedesktop.Sdk
-runtime-version: '22.08'
+runtime-version: '26.08'
 sdk: org.freedesktop.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.ldc
-  - org.freedesktop.Sdk.Extension.llvm14
+  - org.freedesktop.Sdk.Extension.llvm22
 build-extension: true
 separate-locales: false
 appstream-compose: false
