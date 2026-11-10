@@ -111,7 +111,7 @@ modules:
       - type: script
         commands:
           - mkdir -p ${FLATPAK_DEST}/lib
-          - cp -r /usr/lib/sdk/lib/libphobos2.so* ${FLATPAK_DEST}/lib/
+          - cp -r /usr/lib/sdk/dmd/lib/libphobos2.so* ${FLATPAK_DEST}/lib/
         dest-filename: install.sh
 
   - name: appdata
